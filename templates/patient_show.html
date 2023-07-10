@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Patients List {% endblock %}
+
+{% block content %}
+    <div class="patient_show">
+        <h1>PHIẾU NHẬN BỆNH</h1>
+        <p>Ngày: {{current_date}} </p>
+        <div class="part">
+            <p>Họ và tện: {{name}}</p>
+            <p>Năm sinh: {{birth_year}}</p>
+            <p>Số DT: {{phone}}</p>
+            <p>Địa chỉ: {{address}}</p>
+        </div>
+        <div class="part">
+            <p id="title"> NGUYÊN NHÂN ĐIỀU TRỊ</p>
+            <ol class="reason_list">
+            {% for i in range(reason|length) %}
+            <li> Dieu tri : {{ reason[i] }} ({{ details[i] }} ) ----- {{ price[i] }} vnd</li>
+            {% endfor %}
+            </ol>
+            <p>Ghi chú: {{ note }}</p>
+            </div>
+            <br>
+            <p>Số tiền cần thanh toán: {{ amount }}</p>
+             <div class="show_footer">
+                <button id="printButton">In phiếu</button><br><br>
+                <a class="patient_show_a" href="/">Quay về trang chủ </a>
+            </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+@import 'registration_css.css';
+@import 'patients_export.css';
+@import 'patient_show.css';
+@import 'expenses.css';
+
+
+:root {
+    --background-color: #89CFF0; /*baby blue*/
+    --title-color: #5F9EA0; /*Cadet blue*/
+    --sub-title-color: #7393B3; /*Blue Gray */
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+    background-color: #E0E0E0;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    padding: 50px;
+    /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);*/
+}
+h1{
+   text-align: center;
+   margin: 15px 0;
+   }
+p, h3{
+    text-align: center;
+    margin: 7px auto 30px auto;
+}
+a{
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px;
+    text-align: center;
+    border: 1px solid #A9A9A9;
+    border-radius: 5px;
+    margin: 20px 0;
+    background-color: #E8E8E8;
+}
+#save_print, .button {
+    width: 100%;
+    padding: 7px 15px;
+    background: #E8E8E8;
+    border:none;
+    border-radius: 3px;
+}
+a:hover, #save_print:hover, .button:hover{
+    border: 1px solid lightblue;
+    background-color: lightblue;
+}
+@media (max-width: 768px;) {
+    .container {
+    padding: 10px;
+    }
+}

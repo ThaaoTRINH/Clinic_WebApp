@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+<div class="registration">
+        <div class="registration_head">
+
+        <h1> THÔNG TIN BỆNH NHÂN </h1>
+        <p> Ngày: {{current_date}}</p>
+        </div>
+
+        <div class="form">
+                <form method="POST" action="/" id="register">
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="name" name="name"><br><br>
+
+                    <label for="birth_year">Năm sinh:</label>
+                    <input type="text" id="birth_year" name="birth_year"><br><br>
+
+                    <label for="address">Địa chỉ:</label>
+                    <input type="text" id="address" name="address"><br><br>
+
+                    <label for="phone">Số DT:</label>
+                    <input type="text" id="phone" name="phone"><br><br>
+
+                    <label for="note">Ghi chú:</label>
+                    <input type="text" id="note" name="note"><br><br>
+
+                    <!--Reason and details for -->
+                    <div class="reason_details">
+                    <h1>NGUYÊN NHÂN ĐIỀU TRỊ</h1>
+                    <!--Create a reason checkbox and details selection form -->
+                    <div class="check_form">
+                    {% for key,value  in details_dict.items() %}
+                        <div class="box">
+                            <input type="checkbox" id="{{ key }}" name="option" value="{{ key }}"
+                                       onclick="showForm('{{ key }}_select')"/>
+                            <label for="{{ key }}">{{ key }}</label>
+
+                            <select class="selection" id="{{ key }}_select" name="select_option" form="register"
+                                        style="display: none;">
+                              <option value=" "> </option>
+                                {% for line in value %}
+                                <option value="{{ line[0] }}">{{line[0]}} ({{ line[1] }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br><br>
+                    {% endfor %}
+                        </div>
+                        <input type="submit" id="save_print" value="Lưu và in thông tin">
+                        <br><br>
+                        </div>
+                </form>
+            </div>
+        <!-- Filter database by the reason -->
+        <div class="filter">
+            <div class="filter_list">
+                <h3> TRÍCH LỤC TRONG THÁNG</h3>
+                <a href="/filter/xnm">BN xét nghiệm máu</a>
+                <a href="/filter/path-hpv">BN xét nghiệm PATH - HPV</a>
+                <a href="/filter/msmp">BN sử dụng MSMP</a>
+                <a href="/expenses_show">Tổng chi trong tháng</a>
+                <a href="/patients_supply">Chi trả đơn vị xét nghiệm</a>
+                <a href="/patients_list">Tổng kết tháng</a>
+                <br><br>
+                <a href="/expenses" style="font-size: 0.8em;">Nhập các khoản chi trong tháng</a>
+            </div>
+        </div>
+
+        <div class="search">
+            <h3> TÌM BỆNH NHÂN </h3>
+            <div class="search_patients">
+
+<div class="search_group">
+    <div class="search_box">
+                    <form id="patient_date_search" method="POST" action="/search_patient/search_date">
+                        <label for="date_search">Ngày/Tháng/Năm</label><br><br>
+                            <input type="date" id="date_search" name="date_search"><br><br>
+                            <input type="submit" class="button" value="Tìm bệnh nhân">
+                    </form>
+        </div>
+     <div class="search_box">
+                    <form id="patient_name_search" method="POST" action="/search_patient/search_name">
+                              <label for="patient_search">Nhập Tên - Số ĐT hoặc nguyên nhân điều trị</label><br><br>
+                            <input type="text" id="patient_search" name="patient_search"><br><br>
+                        <input type="submit" class="button" value="Tìm bệnh nhân">
+                    </form>
+        </div>
+     <div class="search_box">
+                    <form id="patient_month_search" method="POST" action="/search_patient/search_month">
+                            <input type="text" id="month_search" name="month_search" placeholder="tháng">
+                        <input type="text" id="year_search" name="year_search" placeholder="năm"><br><br>
+                            <input type="submit" class="button" value="Tìm bệnh nhân">
+                    </form>
+        </div>
+     </div>
+
+            </div>
+        </div>
+ </div>
+{% endblock %}

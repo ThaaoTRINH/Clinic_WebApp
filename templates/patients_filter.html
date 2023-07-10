@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Patients List {% endblock %}
+
+{% block content %}
+
+<div class="patients_list">
+
+    <h1>DANH SACH BENH NHAN</h1>
+    <h3> Tim theo: ({{ search }})</h3>
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Ngay</th>
+            <th>Ho Ten Benh Nhan</th>
+            <th>Nam Sinh</th>
+            <th>Dia chi</th>
+            <th>So DT</th>
+            <th>Dieu Tri</th>
+            <th>Chi Tiet</th>
+            <th> Thanh toan</th>
+            <th>Ghi chu</th>
+        </tr>
+        {% for patient in data %}
+        <tr>
+
+            <td>{{ loop.index }}</td>
+            <td>{{patient['date'] }}</td>
+            <td>{{patient['name'] }}</td>
+            <td>{{patient['birth_year'] }}</td>
+            <td>{{patient['address'] }}</td>
+            <td>{{patient['phone'] }}</td>
+            <td>{{ patient['reason'] }}</td>
+            <td> {{ patient['detail'] }} </td>
+            <td style="text-align: right;"> {{ patient['price'] }}</td>
+            <td>{{patient['note'] }}</td>
+        </tr>
+        {% endfor %}
+        <!-- Footer in a table, show the total amount -->
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>TONG CONG:</td>
+            <td style="text-align: right;"> {{ cases }} ca</td>
+            <td style="text-align: right;"> {{ total_amount }} vnd</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

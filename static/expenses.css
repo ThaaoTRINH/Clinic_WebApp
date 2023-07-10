@@ -1,0 +1,20 @@
+
+.expenses_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.expenses_form .form_group  input[type="text"]{
+    width: 100%;
+}
+.expenses_form .form_group  input[type="submit"]{
+    width: 100%;
+    font-size: 1.2em;
+    padding: 15px;
+    background: none;
+    border:none;
+}
+.expenses_form .form_group  input[type="submit"]:hover{
+    border: 1px solid lightblue;
+    background-color: lightblue;
+}

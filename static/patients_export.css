@@ -1,0 +1,34 @@
+.patients_list{}
+table{
+    display: flex;
+    justify-content: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+    }
+
+tr, th, td{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+/* Adjust the width of the first column */
+td:first-child {
+  white-space: nowrap;
+}
+tr {
+    height: 2.5em;
+    width: 5em;
+}
+td, th{
+    padding: 10px;
+}
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+th{
+    font-weight: bold;
+    text-transform: uppercase;}
+
+td ul li{
+    list_style_type: none;
+}

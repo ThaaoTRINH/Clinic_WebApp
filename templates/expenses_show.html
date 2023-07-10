@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %} Patients List {% endblock %}
+
+{% block content %}
+<h1>DANH SACH CHI CHO NHA CUNG CAP</h1>
+<table>
+    <tr>
+        <th>Ngay</th>
+        <th>NOI DUNG</th>
+        <th>SO LUONG</th>
+        <th>DON VI TINH</th>
+        <th>DON GIA</th>
+        <th>THANH TIEN</th>
+<!--        <th>DANH MUC</th>-->
+        <th>Ghi chu</th>
+    </tr>
+    <tr>
+        <th colspan="7">Thuoc - Vat tu y te</th>
+    </tr>
+    {% for row in expenses_list %}
+        {% if row['expenses'] == 'Thuoc - Vat tu y te' %}
+        <tr>
+
+            <td>{{ row['day'] }}</td>
+            <td>{{ row['description'] }}</td>
+            <td>{{ row['quantity'] }}</td>
+            <td>{{ row['unit'] }}</td>
+            <td>{{ row['unit_price'] }}</td>
+            <td>{{ row['amount'] }}</td>
+<!--            <td>{{ row['expenses'] }}</td>-->
+            <td>{{ row['note'] }}</td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+    <tr>
+        <th colspan="7">Van phong pham</th>
+    </tr>
+    {% for row in expenses_list %}
+        {% if row['expenses'] == 'Van phong pham' %}
+        <tr>
+
+            <td>{{ row['day'] }}</td>
+            <td>{{ row['description'] }}</td>
+            <td>{{ row['quantity'] }}</td>
+            <td>{{ row['unit'] }}</td>
+            <td>{{ row['unit_price'] }}</td>
+            <td>{{ row['amount'] }}</td>
+<!--            <td>{{ row['expenses'] }}</td>-->
+            <td>{{ row['note'] }}</td>
+        </tr>
+        {% endif %}
+{% endfor %}
+    <tr>
+        <th colspan="7">Chi phi van hanh</th>
+    </tr>
+
+     {% for row in expenses_list %}
+        {% if row['expenses'] == 'Chi phi van hanh' %}
+        <tr>
+
+            <td>{{ row['day'] }}</td>
+            <td>{{ row['description'] }}</td>
+            <td>{{ row['quantity'] }}</td>
+            <td>{{ row['unit'] }}</td>
+            <td>{{ row['unit_price'] }}</td>
+            <td>{{ row['amount'] }}</td>
+<!--            <td>{{ row['expenses'] }}</td>-->
+            <td>{{ row['note'] }}</td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+
+<tr>
+        <th colspan="7">THUOC - VAT TU Y TE: {{ sum_thuoc}} <br><br>
+        VAN PHONG PHAM: {{ sum_vpp}} <br><br>
+            CHI PHI CO DINH: {{ sum_vh }} <br><br>
+            TONG CHI PHI: {{ totally_amount }}
+        </th>
+
+    </tr>
+
+</table>
+{% endblock %}

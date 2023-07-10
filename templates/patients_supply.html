@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %} Patients List {% endblock %}
+
+{% block content %}
+<!--<p> {{ data }} </p>-->
+<div class="patients_supply_list">
+
+    <h1>DANH SACH BENH NHAN</h1>
+    <h3> Tim theo: ({{ search }})</h3>
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Ngay</th>
+            <th>Ho Ten Benh Nhan</th>
+            <th>Nam Sinh</th>
+            <th>Dia chi</th>
+            <th>So DT</th>
+            <th>Dieu Tri</th>
+            <th>Chi Tiet</th>
+            <th> DON VI CUNG CAP </th>
+            <th> Ghi chu </th>
+        </tr>
+        {% for patient in data %}
+        <tr>
+
+            <td>{{ loop.index }}</td>
+            <td>{{patient['date'] }}</td>
+            <td>{{patient['name'] }}</td>
+            <td>{{patient['birth_year'] }}</td>
+            <td>{{patient['address'] }}</td>
+            <td>{{patient['phone'] }}</td>
+            <td><ul style="padding: 5px; margin-left: 10px; list-style-type: none;">
+                {% for i in range(patient['reason']|length) %}
+                {% set reason = patient['reason'][i] %}
+                    <li>. {{ reason|replace('&lt;', '')|replace('<', '')|safe }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+
+            <td><ul style="padding: 5px; margin-left: 10px; list-style-type: none;">
+                {% for i in range(patient['details']|length) %}
+                {% set detail = patient['details'][i] %}
+                    <li>. {{ detail|replace('&lt;', '')|replace('<', '')|safe }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+
+
+            <td>
+                <ul style="padding: 5px; margin-left: 10px; list-style-type: none;">
+                {% for i in range(patient['supply']|length) %}
+                {% set supply = patient['supply'][i] %}
+                    <li>. {{ supply|replace('&lt;', '')|replace('<', '')|safe }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td>{{patient['note'] }}</td>
+        </tr>
+        {% endfor %}
+        <!-- Footer in a table, show the total amount -->
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>TONG CONG: </td>
+            <td> {{ total_amount }}</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
